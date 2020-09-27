@@ -12,7 +12,7 @@ namespace Auction.Data
 {
     public class AuctionContext : IdentityDbContext<AuctionUser>
     {
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Auction.Models.Product> Product { get; set; }
         public AuctionContext(DbContextOptions<AuctionContext> options)
             : base(options)
         {

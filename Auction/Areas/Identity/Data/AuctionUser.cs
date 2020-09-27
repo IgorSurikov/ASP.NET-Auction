@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Auction.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Auction.Areas.Identity.Data
@@ -24,13 +25,11 @@ namespace Auction.Areas.Identity.Data
         [Display(Name = "Full Name")]
         public string FullName
         {
-            get
-            {
-                return Name + " " + Surname;
-            }
+            get { return Name + " " + Surname; }
         }
 
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal Wallet { get; set; }
+        [Column(TypeName = "decimal(18, 2)")] public decimal Wallet { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -12,8 +12,6 @@ namespace Auction.Models
     {
         public int ID { get; set; }
 
-        [Key] public int AuctionUserID { get; set; }
-
         [Required]
         [StringLength(100)]
         [Display(Name = "Product Name")]
@@ -24,6 +22,7 @@ namespace Auction.Models
         [Display(Name = "Product description")]
         public string ProductDesc { get; set; }
 
+        public int AuctionUserId { get; set; }
         public AuctionUser AuctionUser { get; set; }
     }
 }
