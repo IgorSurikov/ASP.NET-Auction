@@ -4,7 +4,7 @@
     ViewData["Title"] = "Storage";
 }
 
-<h1>Index</h1>
+<h1>Your Storage</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.ProductDesc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuctionUserId)
+            @Html.DisplayNameFor(model => model.AuctionUser)
         </th>
         <th></th>
     </tr>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.ProductDesc)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AuctionUserId)
+                @Html.DisplayFor(modelItem => item.AuctionUser.FullName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -46,5 +46,5 @@
     </tbody>
 </table>
 <div>
-    <a asp-action="Profile">Back to profile</a>
+    <a href="Identity/Account/Manage/Index">Back to profile</a>
 </div>

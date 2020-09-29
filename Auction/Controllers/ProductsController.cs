@@ -2,27 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Auction.Areas.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Auction.Data;
 using Auction.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Auction.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly AuctionContext _context;
+        private readonly UserManager<AuctionUser> _userManager;
 
-        public ProductsController(AuctionContext context)
+        public ProductsController(AuctionContext context, UserManager<AuctionUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Products
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            return View(await _context.Product.Where(p => p.AuctionUser == user).ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -54,14 +66,22 @@ namespace Auction.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ProductName,ProductDesc,AuctionUserId")] Product product)
+        public async Task<IActionResult> Create([Bind("ID,ProductName,ProductDesc")] Product product)
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
             if (ModelState.IsValid)
             {
+                product.AuctionUser = user;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -78,6 +98,7 @@ namespace Auction.Controllers
             {
                 return NotFound();
             }
+
             return View(product);
         }
 
@@ -86,7 +107,8 @@ namespace Auction.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ProductName,ProductDesc,AuctionUserId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,ProductName,ProductDesc")]
+            Product product)
         {
             if (id != product.ID)
             {
@@ -111,8 +133,10 @@ namespace Auction.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -148,11 +172,6 @@ namespace Auction.Controllers
         private bool ProductExists(int id)
         {
             return _context.Product.Any(e => e.ID == id);
-        }
-
-        public IActionResult Profile()
-        {
-            return null;
         }
     }
 }
