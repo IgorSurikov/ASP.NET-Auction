@@ -12,6 +12,10 @@
     <Compile Remove="Migrations\20200927154923_ProductModel.Designer.cs" />
     <Compile Remove="Migrations\20200927160009_ProductModel.cs" />
     <Compile Remove="Migrations\20200927160009_ProductModel.Designer.cs" />
+    <Compile Remove="Migrations\20200929161914_fixProductModel.cs" />
+    <Compile Remove="Migrations\20200929161914_fixProductModel.Designer.cs" />
+    <Compile Remove="Migrations\20200929162331_fixProductModel1.cs" />
+    <Compile Remove="Migrations\20200929162331_fixProductModel1.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

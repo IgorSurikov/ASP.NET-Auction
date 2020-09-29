@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Auction.Areas.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +35,8 @@ namespace Auction.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            return View(await _context.Product.Where(p => p.AuctionUser == user).ToListAsync());
+            await _context.Entry(user).Collection(x => x.Products).LoadAsync();
+            return View(user.Products.ToList());
         }
 
         // GET: Products/Details/5
@@ -76,6 +78,7 @@ namespace Auction.Controllers
 
             if (ModelState.IsValid)
             {
+                product.AuctionUserId = _userManager.GetUserId(User);
                 product.AuctionUser = user;
                 _context.Add(product);
                 await _context.SaveChangesAsync();

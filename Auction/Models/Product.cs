@@ -22,7 +22,10 @@ namespace Auction.Models
         [Display(Name = "Product description")]
         public string ProductDesc { get; set; }
 
-        public int AuctionUserId { get; set; }
+        public string AuctionUserId { get; set; }
+
+        [Display(Name = "Owner")]
         public AuctionUser AuctionUser { get; set; }
+        public ProductLot ProductLot { get; set; }
     }
 }

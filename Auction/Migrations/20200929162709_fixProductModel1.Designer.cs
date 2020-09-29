@@ -4,14 +4,16 @@ using Auction.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auction.Migrations
 {
     [DbContext(typeof(AuctionContext))]
-    partial class AuctionContextModelSnapshot : ModelSnapshot
+    [Migration("20200929162709_fixProductModel1")]
+    partial class fixProductModel1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,57 +124,6 @@ namespace Auction.Migrations
                     b.HasIndex("AuctionUserId");
 
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("Auction.Models.ProductLot", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("CurrentPrice")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<string>("CustomerAuctionUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("EndTrading")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LotName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("OwnerAuctionUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("StartPrice")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<DateTime>("StartTrading")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("UpdateDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CustomerAuctionUserId");
-
-                    b.HasIndex("OwnerAuctionUserId");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("ProductLot");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -315,23 +266,6 @@ namespace Auction.Migrations
                     b.HasOne("Auction.Areas.Identity.Data.AuctionUser", "AuctionUser")
                         .WithMany("Products")
                         .HasForeignKey("AuctionUserId");
-                });
-
-            modelBuilder.Entity("Auction.Models.ProductLot", b =>
-                {
-                    b.HasOne("Auction.Areas.Identity.Data.AuctionUser", "Customer")
-                        .WithMany("CustomerProductLots")
-                        .HasForeignKey("CustomerAuctionUserId");
-
-                    b.HasOne("Auction.Areas.Identity.Data.AuctionUser", "Owner")
-                        .WithMany("OwnerProductLots")
-                        .HasForeignKey("OwnerAuctionUserId");
-
-                    b.HasOne("Auction.Models.Product", "Product")
-                        .WithOne("ProductLot")
-                        .HasForeignKey("Auction.Models.ProductLot", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

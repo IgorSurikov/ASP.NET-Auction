@@ -31,5 +31,7 @@ namespace Auction.Areas.Identity.Data
         [Column(TypeName = "decimal(18, 2)")] public decimal Wallet { get; set; }
 
         public ICollection<Product> Products { get; set; }
+        public ICollection<ProductLot> OwnerProductLots { get; set; }
+        public ICollection<ProductLot> CustomerProductLots { get; set; }
     }
 }
