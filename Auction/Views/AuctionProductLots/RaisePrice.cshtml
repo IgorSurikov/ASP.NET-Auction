@@ -1,0 +1,59 @@
+﻿@model Auction.Models.ProductLot
+
+@{
+    ViewData["Title"] = "Raise price";
+}
+
+<h1>Raise price</h1>
+<partial name="_StatusMessage" model="@ViewData["StatusMessage"]" />
+
+<h4>@Html.DisplayFor(model => model.LotName)</h4>
+<hr />
+<div class="row lead">
+    <div class="col-sm-3">
+        @Html.DisplayNameFor(model => model.Product.ProductName)
+    </div>
+    <div class="col-sm-9">
+        @Html.DisplayFor(model => model.Product.ProductName)
+    </div>
+</div>
+<div class="row lead">
+    <div class="col-sm-3">
+        @Html.DisplayNameFor(model => model.StartPrice)
+    </div>
+    <div class="col-sm-9">
+        @Html.DisplayFor(model => model.StartPrice) $
+    </div>
+</div>
+<div class="row lead">
+    <div class="col-sm-3">
+        @Html.DisplayNameFor(model => model.CurrentPrice)
+    </div>
+    <div class="col-sm-9">
+        @Html.DisplayFor(model => model.CurrentPrice) $
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RaisePrice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">New Price</label>
+                <input type="number" class="form-control" name="newPrice"/>
+                <span asp-validation-for="LotName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

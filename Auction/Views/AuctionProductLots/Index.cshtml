@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Auction.Models.ProductLot>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mb-5">Lots</h1>
+
+@foreach (var item in Model)
+{
+    <div class="m-3 border-top">
+        <h5>
+            @Html.DisplayFor(modelItem => item.LotName)
+        </h5>
+
+        <div class="row lead">
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(modelItem => item.Product.ProductName)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </div>
+        </div>
+        <div class="row lead">
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(modelItem => item.Product.ProductDesc)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(modelItem => item.Product.ProductDesc)
+            </div>
+        </div>
+        <div class="row lead">
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(modelItem => item.CurrentPrice)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(modelItem => item.CurrentPrice) $
+            </div>
+        </div>
+        <div class="row lead">
+            <div class="col-sm-3">
+                Trading period
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(modelItem => item.StartTrading) - @Html.DisplayFor(modelItem => item.EndTrading)
+            </div>
+        </div>
+        <div>
+            <a asp-action="RaisePrice" asp-route-id="@item.ID">Raise price</a> |
+            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+        </div>
+    </div>
+}
