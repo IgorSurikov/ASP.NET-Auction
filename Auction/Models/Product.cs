@@ -26,6 +26,9 @@ namespace Auction.Models
 
         [Display(Name = "Owner")]
         public AuctionUser AuctionUser { get; set; }
-        public ProductLot ProductLot { get; set; }
+
+        public ICollection<ProductLot> ProductLots { get; set; }
+
+        public ProductLot CurrentLot => ProductLots.FirstOrDefault(pl => pl.IsActive = true);
     }
 }

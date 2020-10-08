@@ -59,8 +59,8 @@ namespace Auction.Controllers
             var userId = _userManager.GetUserId(User);
             ViewData["ProductId"] =
                 new SelectList(
-                    _context.Set<Product>().Include(p => p.ProductLot).Where(p =>
-                        p.AuctionUserId == userId && p.ProductLot == null),
+                    _context.Set<Product>().Include(p => p.ProductLots).AsEnumerable().Where(p =>
+                        p.AuctionUserId == userId && p.CurrentLot == null),
                     "ID", "ProductName");
             return View();
         }
@@ -81,6 +81,7 @@ namespace Auction.Controllers
                 productLot.CurrentPrice = productLot.StartPrice;
                 productLot.UpdateDateTime = DateTime.Now;
                 productLot.OwnerAuctionUserId = _userManager.GetUserId(User);
+                productLot.CustomerAuctionUserId = _userManager.GetUserId(User);
                 productLot.CustomerAuctionUserId = null;
                 _context.Add(productLot);
                 await _context.SaveChangesAsync();

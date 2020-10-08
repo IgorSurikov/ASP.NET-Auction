@@ -27,7 +27,7 @@ namespace Auction.Controllers
         public async Task<IActionResult> Index()
         {
             var auctionContext1 = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
-                .Include(p => p.Product);
+                .Include(p => p.Product).Where(p => p.IsActive);
             return View(await auctionContext1.ToListAsync());
         }
 
@@ -79,11 +79,6 @@ namespace Auction.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RaisePrice(int id, int newPrice)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var productLot = await _context.ProductLot.Include(p => p.Product).FirstOrDefaultAsync(p => p.ID == id);
             if (productLot == null)
             {
@@ -96,25 +91,20 @@ namespace Auction.Controllers
             }
             if (newPrice >= user.Wallet)
             {
-                ViewData["StatusMessage"] = "Error: You don't have enough money";
+                ViewData["StatusMessage"] = "Error: You don't have enough money.";
                 return View(productLot);
             }
             if (newPrice <= productLot.CurrentPrice)
             {
-                ViewData["StatusMessage"] = "Error: New price less then current price";
+                ViewData["StatusMessage"] = "Error: New price less then current price.";
                 return View(productLot);
-            }
-
-
-            /*if (id != productLot.ID)
-            {
-                return NotFound();
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    productLot.IsActive = false;
                     _context.Update(productLot);
                     await _context.SaveChangesAsync();
                 }
@@ -130,8 +120,17 @@ namespace Auction.Controllers
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
-            }*/
+                var newProductLot = (ProductLot)productLot.Clone();
+                newProductLot.ID = 0;
+                newProductLot.CustomerAuctionUserId = _userManager.GetUserId(User);
+                newProductLot.IsActive = true;
+                newProductLot.CurrentPrice = newPrice;
+                newProductLot.UpdateDateTime = DateTime.Now;
+                _context.Add(newProductLot);
+                await _context.SaveChangesAsync();
+                ViewData["StatusMessage"] = "Congratulations, you have successfully increased price.";
+                return View(newProductLot);
+            }
             return View(productLot);
         }
 

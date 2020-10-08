@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Auction.Models
 {
-    public class ProductLot
+    public class ProductLot : ICloneable
     {
         public int ID { get; set; }
 
@@ -60,5 +60,10 @@ namespace Auction.Models
         [InverseProperty("CustomerProductLots")]
         [Display(Name = "Customer")]
         public AuctionUser Customer { get; set; }
+
+        public object Clone()
+        {
+            return base.MemberwiseClone();
+        }
     }
 }
