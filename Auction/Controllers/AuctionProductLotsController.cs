@@ -26,9 +26,9 @@ namespace Auction.Controllers
         // GET: AuctionProductLots
         public async Task<IActionResult> Index()
         {
-            var auctionContext1 = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
+            var auctionContext = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
                 .Include(p => p.Product).Where(p => p.IsActive);
-            return View(await auctionContext1.ToListAsync());
+            return View(await auctionContext.ToListAsync());
         }
 
         // GET: AuctionProductLots/Details/5
@@ -39,17 +39,12 @@ namespace Auction.Controllers
                 return NotFound();
             }
 
-            var productLot = await _context.ProductLot
-                .Include(p => p.Customer)
-                .Include(p => p.Owner)
-                .Include(p => p.Product)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (productLot == null)
-            {
-                return NotFound();
-            }
+            var auctionContext = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
+                .Include(p => p.Product);
+            string lotName = auctionContext.FirstOrDefault(p => p.ID == id)?.LotName;
 
-            return View(productLot);
+
+            return View(await auctionContext.Where(p => p.LotName == lotName).OrderBy(p => p.UpdateDateTime).ToListAsync());
         }
 
         // GET: AuctionProductLots/Create
@@ -84,16 +79,19 @@ namespace Auction.Controllers
             {
                 return NotFound();
             }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
             if (newPrice >= user.Wallet)
             {
                 ViewData["StatusMessage"] = "Error: You don't have enough money.";
                 return View(productLot);
             }
+
             if (newPrice <= productLot.CurrentPrice)
             {
                 ViewData["StatusMessage"] = "Error: New price less then current price.";
@@ -120,7 +118,7 @@ namespace Auction.Controllers
                     }
                 }
 
-                var newProductLot = (ProductLot)productLot.Clone();
+                var newProductLot = (ProductLot) productLot.Clone();
                 newProductLot.ID = 0;
                 newProductLot.CustomerAuctionUserId = _userManager.GetUserId(User);
                 newProductLot.IsActive = true;
@@ -131,6 +129,7 @@ namespace Auction.Controllers
                 ViewData["StatusMessage"] = "Congratulations, you have successfully increased price.";
                 return View(newProductLot);
             }
+
             return View(productLot);
         }
 

@@ -28,7 +28,7 @@ namespace Auction.Controllers
         public async Task<IActionResult> Index()
         {
             var auctionContext1 = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
-                .Include(p => p.Product);
+                .Include(p => p.Product).Where(p => p.IsActive);
             return View(await auctionContext1.ToListAsync());
         }
 

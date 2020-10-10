@@ -1,4 +1,4 @@
-﻿@model Auction.Models.ProductLot
+﻿@model IEnumerable<Auction.Models.ProductLot>
 
 @{
     ViewData["Title"] = "Details";
@@ -7,72 +7,73 @@
 <h1>Details</h1>
 
 <div>
-    <h4>ProductLot</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LotName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LotName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt class = "col-sm-2">
+    <h4>Trading history</h4>
+    <hr/>
+    <h4>@Html.DisplayFor(model => model.First().LotName)</h4>
+    <div class="row lead">
+        <div class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </div>
+        <div class="col-sm-9">
+            @Html.DisplayFor(model => model.First().Product.ProductName)
+        </div>
+    </div>
+    <div class="row lead">
+        <div class="col-sm-3">
             @Html.DisplayNameFor(model => model.StartPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartPrice)
-        </dd>
-        <dt class = "col-sm-2">
+        </div>
+        <div class="col-sm-9">
+            @Html.DisplayFor(model => model.First().StartPrice) $
+        </div>
+    </div>
+    <div class="row lead">
+        <div class="col-sm-3">
             @Html.DisplayNameFor(model => model.CurrentPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CurrentPrice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartTrading)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartTrading)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndTrading)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndTrading)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdateDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdateDateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Product)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Product.ProductDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Owner)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Owner.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Id)
-        </dd>
-    </dl>
+        </div>
+        <div class="col-sm-9">
+            @Html.DisplayFor(model => model.FirstOrDefault(p => p.IsActive).CurrentPrice) $
+        </div>
+    </div>
+    <hr/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentPrice)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateDateTime)
+                </td>  
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentPrice)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to auction</a>
 </div>
