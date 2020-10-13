@@ -35,8 +35,10 @@ namespace Auction.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            await _context.Entry(user).Collection(x => x.Products).LoadAsync();
-            return View(user.Products.ToList());
+            var products = _context.Product.Include(p => p.ProductLots)
+                .Where(p => p.AuctionUser == user);
+            //await _context.Entry(user).Collection(x => x.Products).LoadAsync();
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
@@ -110,8 +112,7 @@ namespace Auction.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ProductName,ProductDesc")]
-            Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,ProductName,ProductDesc")] Product product)
         {
             if (id != product.ID)
             {

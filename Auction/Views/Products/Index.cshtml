@@ -26,7 +26,7 @@
     </thead>
     <tbody>
     @foreach (var item in Model) {
-        <tr>
+        <tr asp-active ="item.CurrentLot?.IsActive ?? false">
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
