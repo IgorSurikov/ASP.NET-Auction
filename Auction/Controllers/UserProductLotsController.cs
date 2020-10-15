@@ -82,7 +82,6 @@ namespace Auction.Controllers
                 productLot.UpdateDateTime = DateTime.Now;
                 productLot.OwnerAuctionUserId = _userManager.GetUserId(User);
                 productLot.CustomerAuctionUserId = _userManager.GetUserId(User);
-                productLot.CustomerAuctionUserId = null;
                 _context.Add(productLot);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -118,8 +117,9 @@ namespace Auction.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var productLot = await _context.ProductLot.Include(p => p.Product).FirstOrDefaultAsync(p => p.ID == id);
-            //productLot.Product.ProductLot = null;
-            _context.ProductLot.Remove(productLot);
+            var productLots = _context.ProductLot.Include(p => p.Product)
+                .Where(p => p.LotName == productLot.LotName);
+            _context.ProductLot.RemoveRange(productLots);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

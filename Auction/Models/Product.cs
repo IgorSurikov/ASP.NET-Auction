@@ -28,7 +28,8 @@ namespace Auction.Models
         public AuctionUser AuctionUser { get; set; }
 
         public ICollection<ProductLot> ProductLots { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
 
-        public ProductLot CurrentLot => ProductLots.FirstOrDefault(pl => pl.IsActive = true);
+        public ProductLot CurrentLot => ProductLots?.FirstOrDefault(pl => pl.IsActive);
     }
 }

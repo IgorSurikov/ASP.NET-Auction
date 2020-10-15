@@ -9,6 +9,7 @@ using Auction.Data;
 using Auction.Models;
 using Auction.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis;
 
 namespace Auction.Controllers
 {
@@ -26,8 +27,35 @@ namespace Auction.Controllers
         // GET: AuctionProductLots
         public async Task<IActionResult> Index()
         {
-            var auctionContext = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
-                .Include(p => p.Product).Where(p => p.IsActive);
+            var currentDate = DateTime.Now;
+            var auctionContext = _context.ProductLot
+                .Include(p => p.Customer)
+                .Include(p => p.Owner)
+                .Include(p => p.Product)
+                .Where(p => p.IsActive && p.StartTrading <= currentDate && p.EndTrading > currentDate);
+
+            var auctionTransactions = _context.ProductLot
+                .Include(p => p.Customer)
+                .Include(p => p.Owner)
+                .Include(p => p.Product)
+                .Where(p => p.IsActive && p.EndTrading <= currentDate &&
+                            p.OwnerAuctionUserId != p.CustomerAuctionUserId);
+            foreach (var t in auctionTransactions)
+            {
+                var transaction = new Transaction()
+                {
+                    ProductId = t.ProductId,
+                    OwnerAuctionUserId = t.OwnerAuctionUserId,
+                    CustomerAuctionUserId = t.CustomerAuctionUserId,
+                    TransactionAmount = t.CurrentPrice
+                };
+                t.IsActive = false;
+                t.Owner.Wallet += t.CurrentPrice;
+                t.Product.AuctionUser = t.Customer;
+                _context.Update(t);
+            }
+
+            await _context.SaveChangesAsync();
             return View(await auctionContext.ToListAsync());
         }
 
@@ -44,7 +72,8 @@ namespace Auction.Controllers
             string lotName = auctionContext.FirstOrDefault(p => p.ID == id)?.LotName;
 
 
-            return View(await auctionContext.Where(p => p.LotName == lotName).OrderBy(p => p.UpdateDateTime).ToListAsync());
+            return View(await auctionContext.Where(p => p.LotName == lotName).OrderBy(p => p.UpdateDateTime)
+                .ToListAsync());
         }
 
         // GET: AuctionProductLots/Create
@@ -118,12 +147,14 @@ namespace Auction.Controllers
                     }
                 }
 
+                user.Wallet -= (newPrice - productLot.CurrentPrice);
                 var newProductLot = (ProductLot) productLot.Clone();
                 newProductLot.ID = 0;
                 newProductLot.CustomerAuctionUserId = _userManager.GetUserId(User);
                 newProductLot.IsActive = true;
                 newProductLot.CurrentPrice = newPrice;
                 newProductLot.UpdateDateTime = DateTime.Now;
+                _context.Update(user);
                 _context.Add(newProductLot);
                 await _context.SaveChangesAsync();
                 ViewData["StatusMessage"] = "Congratulations, you have successfully increased price.";

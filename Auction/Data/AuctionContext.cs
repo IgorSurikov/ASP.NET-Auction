@@ -14,6 +14,7 @@ namespace Auction.Data
     {
         public DbSet<Auction.Models.Product> Product { get; set; }
         public DbSet<Auction.Models.ProductLot> ProductLot { get; set; }
+        public DbSet<Auction.Models.Transaction> Transaction { get; set; }
         public AuctionContext(DbContextOptions<AuctionContext> options)
             : base(options)
         {

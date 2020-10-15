@@ -33,5 +33,7 @@ namespace Auction.Areas.Identity.Data
         public ICollection<Product> Products { get; set; }
         public ICollection<ProductLot> OwnerProductLots { get; set; }
         public ICollection<ProductLot> CustomerProductLots { get; set; }
+        public ICollection<Transaction> CustomerTransactions { get; set; }
+        public ICollection<Transaction> OwnerTransactions { get; set; }
     }
 }

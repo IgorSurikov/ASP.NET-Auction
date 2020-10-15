@@ -35,6 +35,7 @@ namespace Auction.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            var t = _context.ProductLot;
             var products = _context.Product.Include(p => p.ProductLots)
                 .Where(p => p.AuctionUser == user);
             //await _context.Entry(user).Collection(x => x.Products).LoadAsync();

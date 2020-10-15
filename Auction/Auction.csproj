@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20200929161914_fixProductModel.Designer.cs" />
     <Compile Remove="Migrations\20200929162331_fixProductModel1.cs" />
     <Compile Remove="Migrations\20200929162331_fixProductModel1.Designer.cs" />
+    <Compile Remove="Migrations\20201013113144_Transaction.cs" />
+    <Compile Remove="Migrations\20201013113144_Transaction.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
