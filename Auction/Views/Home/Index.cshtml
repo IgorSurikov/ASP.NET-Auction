@@ -5,9 +5,10 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     @await Component.InvokeAsync("Timer")
-    <!--<form asp-controller="Home" asp-action="Test"
+    <form asp-controller="Home" asp-action="Test"
           data-ajax-mode="replace" data-ajax-update="#results"
           data-ajax="true" data-ajax-method="POST">
         <input type="submit" value="Save" class="btn btn-primary"/>
-    </form>-->
+    </form>
+    <div id="result"></div>
 </div>

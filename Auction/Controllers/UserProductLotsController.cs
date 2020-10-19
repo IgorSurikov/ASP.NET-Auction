@@ -27,9 +27,11 @@ namespace Auction.Controllers
         // GET: UserProductLots
         public async Task<IActionResult> Index()
         {
-            var auctionContext1 = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
-                .Include(p => p.Product).Where(p => p.IsActive);
-            return View(await auctionContext1.ToListAsync());
+            var auctionContext = _context.ProductLot.Include(p => p.Customer)
+                .Include(p => p.Owner)
+                .Include(p => p.Product)
+                .Where(p => p.IsActive && p.OwnerAuctionUserId == _userManager.GetUserId(User));
+            return View(await auctionContext.ToListAsync());
         }
 
         // GET: UserProductLots/Details/5
@@ -66,8 +68,6 @@ namespace Auction.Controllers
         }
 
         // POST: UserProductLots/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -75,20 +75,27 @@ namespace Auction.Controllers
                 "ID,LotName,StartPrice,StartTrading,EndTrading,ProductId")]
             ProductLot productLot)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                productLot.IsActive = true;
-                productLot.CurrentPrice = productLot.StartPrice;
-                productLot.UpdateDateTime = DateTime.Now;
-                productLot.OwnerAuctionUserId = _userManager.GetUserId(User);
-                productLot.CustomerAuctionUserId = _userManager.GetUserId(User);
-                _context.Add(productLot);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ID", "ProductDesc", productLot.ProductId);
+                return View(productLot);
             }
 
-            ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ID", "ProductDesc", productLot.ProductId);
-            return View(productLot);
+            if (ProductLotExists(productLot.LotName))
+            {
+                ViewData["StatusMessage"] = "Error: this lot name already exists";
+                ViewData["ProductId"] = new SelectList(_context.Set<Product>(), "ID", "ProductDesc", productLot.ProductId);
+                return View(productLot);
+            }
+            productLot.IsActive = true;
+            productLot.CurrentPrice = productLot.StartPrice;
+            productLot.UpdateDateTime = DateTime.Now;
+            productLot.OwnerAuctionUserId = _userManager.GetUserId(User);
+            productLot.CustomerAuctionUserId = _userManager.GetUserId(User);
+            _context.Add(productLot);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -124,9 +131,9 @@ namespace Auction.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductLotExists(int id)
+        private bool ProductLotExists(string lotName)
         {
-            return _context.ProductLot.Any(e => e.ID == id);
+            return _context.ProductLot.Any(e => e.LotName == lotName);
         }
     }
 }

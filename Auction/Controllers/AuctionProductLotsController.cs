@@ -10,6 +10,7 @@ using Auction.Models;
 using Auction.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Differencing;
 
 namespace Auction.Controllers
 {
@@ -38,22 +39,31 @@ namespace Auction.Controllers
                 .Include(p => p.Customer)
                 .Include(p => p.Owner)
                 .Include(p => p.Product)
-                .Where(p => p.IsActive && p.EndTrading <= currentDate &&
-                            p.OwnerAuctionUserId != p.CustomerAuctionUserId);
+                .Where(p => p.IsActive && p.EndTrading <= currentDate);
             foreach (var t in auctionTransactions)
             {
-                var transaction = new Transaction()
+                if (t.OwnerAuctionUserId == t.CustomerAuctionUserId)
                 {
-                    ProductId = t.ProductId,
-                    OwnerAuctionUserId = t.OwnerAuctionUserId,
-                    CustomerAuctionUserId = t.CustomerAuctionUserId,
-                    TransactionAmount = t.CurrentPrice
-                };
-                t.IsActive = false;
-                t.Owner.Wallet += t.CurrentPrice;
-                t.Product.AuctionUser = t.Customer;
+                    t.IsActive = false;
+                }
+                else
+                {
+                    var transaction = new Transaction()
+                    {
+                        ProductId = t.ProductId,
+                        OwnerAuctionUserId = t.OwnerAuctionUserId,
+                        CustomerAuctionUserId = t.CustomerAuctionUserId,
+                        TransactionAmount = t.CurrentPrice
+                    };
+                    t.IsActive = false;
+                    t.Owner.Wallet += t.CurrentPrice;
+                    t.Product.AuctionUser = t.Customer;
+                    _context.Add(transaction);
+                }
                 _context.Update(t);
             }
+            var deletedProductLots = _context.ProductLot.Where(p => p.IsActive == false);
+            _context.ProductLot.RemoveRange(deletedProductLots);
 
             await _context.SaveChangesAsync();
             return View(await auctionContext.ToListAsync());
@@ -67,19 +77,15 @@ namespace Auction.Controllers
                 return NotFound();
             }
 
-            var auctionContext = _context.ProductLot.Include(p => p.Customer).Include(p => p.Owner)
+            var auctionContext = _context.ProductLot.Include(p => p.Customer)
+                .Include(p => p.Owner)
                 .Include(p => p.Product);
             string lotName = auctionContext.FirstOrDefault(p => p.ID == id)?.LotName;
-
-
             return View(await auctionContext.Where(p => p.LotName == lotName).OrderBy(p => p.UpdateDateTime)
                 .ToListAsync());
         }
 
-        // GET: AuctionProductLots/Create
 
-
-        // GET: AuctionProductLots/Edit/5
         public async Task<IActionResult> RaisePrice(int? id)
         {
             if (id == null)
@@ -96,9 +102,6 @@ namespace Auction.Controllers
             return View(productLot);
         }
 
-        // POST: AuctionProductLots/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RaisePrice(int id, int newPrice)

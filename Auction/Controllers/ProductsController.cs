@@ -124,6 +124,7 @@ namespace Auction.Controllers
             {
                 try
                 {
+                    product.AuctionUserId = _userManager.GetUserId(User);
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
