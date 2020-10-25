@@ -12,6 +12,10 @@ namespace Auction.Models
     {
         public int ID { get; set; }
 
+        [Display(Name = "Transaction date")]
+        [DataType(DataType.DateTime)]
+        public DateTime InsertDateTime { get; set; }
+
         [Required]
         [Column(TypeName = "decimal(18, 2)")]
         [Display(Name = "TransactionAmount")]

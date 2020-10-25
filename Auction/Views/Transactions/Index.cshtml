@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Auction.Models.Product>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<h1>Transactions</h1>
+<div class="my-2">
+    <button type="button" id="Refresh" class="btn btn-dark btn-lg">Refresh</button>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Transaction date
+        </th>
+        <th>
+            Product
+        </th>
+        <th>
+            Owner
+        </th>
+        <th>
+            Customer
+        </th>
+        <th>
+            Transaction amount
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+</table>
+<script>
+
+    $(document).ready(function() {
+        $("#Refresh").click(function() {
+            $.ajax({
+                url: '/api/apitransactions',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    GetTransactions(data);
+                },
+            });
+        });
+    });
+
+
+    function GetTransactions(data) {
+
+        $("tbody").empty();
+        const transactions = data;
+        let rows = document.querySelector("tbody");
+        transactions.forEach(transaction => {
+            rows.append(row(transaction));
+        });
+    }
+
+
+    function row(transaction) {
+
+        const tr = document.createElement("tr");
+        tr.setAttribute("data-rowid", transaction.id);
+
+        const transDate = document.createElement("td");
+        var date = new Date(transaction.transactionDate);
+        transDate.append(date.toLocaleString("en-US",
+            {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }));
+        tr.append(transDate);
+
+        const product = document.createElement("td");
+        product.append(transaction.product);
+        tr.append(product);
+
+        const owner = document.createElement("td");
+        owner.append(transaction.owner);
+        tr.append(owner);
+
+        const customer = document.createElement("td");
+        customer.append(transaction.customer);
+        tr.append(customer);
+
+        const amount = document.createElement("td");
+        amount.append(transaction.amount);
+        tr.append(amount);
+
+        return tr;
+    }
+
+</script>

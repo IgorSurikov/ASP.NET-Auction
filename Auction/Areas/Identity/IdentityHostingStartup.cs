@@ -9,18 +9,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: HostingStartup(typeof(Auction.Areas.Identity.IdentityHostingStartup))]
+
 namespace Auction.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<AuctionContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AuctionContextConnection")));
 
                 services.AddDefaultIdentity<AuctionUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<AuctionContext>();
             });
         }

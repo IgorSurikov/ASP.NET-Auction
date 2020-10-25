@@ -53,15 +53,18 @@ namespace Auction.Controllers
                         ProductId = t.ProductId,
                         OwnerAuctionUserId = t.OwnerAuctionUserId,
                         CustomerAuctionUserId = t.CustomerAuctionUserId,
-                        TransactionAmount = t.CurrentPrice
+                        TransactionAmount = t.CurrentPrice,
+                        InsertDateTime = DateTime.Now
                     };
                     t.IsActive = false;
                     t.Owner.Wallet += t.CurrentPrice;
                     t.Product.AuctionUser = t.Customer;
                     _context.Add(transaction);
                 }
+
                 _context.Update(t);
             }
+
             var deletedProductLots = _context.ProductLot.Where(p => p.IsActive == false);
             _context.ProductLot.RemoveRange(deletedProductLots);
 
@@ -81,7 +84,9 @@ namespace Auction.Controllers
                 .Include(p => p.Owner)
                 .Include(p => p.Product);
             string lotName = auctionContext.FirstOrDefault(p => p.ID == id)?.LotName;
-            return View(await auctionContext.Where(p => p.LotName == lotName).OrderBy(p => p.UpdateDateTime)
+            return View(await auctionContext
+                .Where(p => p.LotName == lotName)
+                .OrderBy(p => p.UpdateDateTime)
                 .ToListAsync());
         }
 
