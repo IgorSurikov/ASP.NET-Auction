@@ -55,7 +55,11 @@
         <div>
             <a asp-action="RaisePrice" asp-route-id="@item.ID">Raise price</a> |
             <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Delete" asp-route-id="@item.ID">Close lot</a>
+            }
+
         </div>
     </div>
 }

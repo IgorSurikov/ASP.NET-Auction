@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -44,7 +45,7 @@ namespace Auction.Controllers
             {
                 if (t.OwnerAuctionUserId == t.CustomerAuctionUserId)
                 {
-                    t.IsActive = false;
+                    _context.ProductLot.Remove(t);
                 }
                 else
                 {
@@ -60,13 +61,12 @@ namespace Auction.Controllers
                     t.Owner.Wallet += t.CurrentPrice;
                     t.Product.AuctionUser = t.Customer;
                     _context.Add(transaction);
+                    _context.ProductLot.RemoveRange(_context.ProductLot.Where(p => p.LotName == t.LotName));
                 }
 
                 _context.Update(t);
             }
 
-            var deletedProductLots = _context.ProductLot.Where(p => p.IsActive == false);
-            _context.ProductLot.RemoveRange(deletedProductLots);
 
             await _context.SaveChangesAsync();
             return View(await auctionContext.ToListAsync());
@@ -180,33 +180,45 @@ namespace Auction.Controllers
                 return NotFound();
             }
 
-            var productLot = await _context.ProductLot
-                .Include(p => p.Customer)
+            var lotName = _context.ProductLot.FirstOrDefault(m => m.ID == id)?.LotName;
+            var lots = _context.ProductLot.Include(p => p.Customer)
                 .Include(p => p.Owner)
-                .Include(p => p.Product)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (productLot == null)
+                .Include(p => p.Product).Where(l => l.LotName == lotName).OrderByDescending(l => l.UpdateDateTime);
+            var lotsList = lots.ToList();
+            for (int i = 0; i < lotsList.Count - 1; i++)
             {
-                return NotFound();
+                var diff = lotsList[i].CurrentPrice - lotsList[i + 1].CurrentPrice;
+                lotsList[i].Customer.Wallet += diff;
+                _context.Update(lotsList[i].Customer);
             }
-
-            return View(productLot);
-        }
-
-        // POST: AuctionProductLots/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var productLot = await _context.ProductLot.FindAsync(id);
-            _context.ProductLot.Remove(productLot);
+            _context.ProductLot.RemoveRange(lots);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); 
         }
+
 
         private bool ProductLotExists(int id)
         {
             return _context.ProductLot.Any(e => e.ID == id);
+        }
+
+        public async Task<IActionResult> Cancel(string lotName)
+        {
+            if (lotName == null)
+            {
+                return NotFound();
+            }
+            var lots = _context.ProductLot.Include(p => p.Customer)
+                .Include(p => p.Owner)
+                .Include(p => p.Product).Where(l => l.LotName == lotName).OrderByDescending(l => l.UpdateDateTime);
+            var lotsList = lots.ToList();
+            var diff = lotsList[0].CurrentPrice - lotsList[1].CurrentPrice;
+            lotsList[0].Customer.Wallet += diff;
+            (await _context.ProductLot.FindAsync(lotsList[1].ID)).IsActive = true;
+            _context.ProductLot.Remove((await _context.ProductLot.FindAsync(lotsList[0].ID)));
+            await _context.SaveChangesAsync();
+      
+            return RedirectToAction(nameof(Details), new { id = lotsList[1].ID });
         }
     }
 }

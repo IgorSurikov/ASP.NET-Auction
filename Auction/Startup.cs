@@ -47,6 +47,7 @@ namespace Auction
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -60,12 +61,12 @@ namespace Auction
                 endpoints.MapControllerRoute(
                     name: "home",
                     pattern: "{controller}/{action}",
-                    defaults: new { controller = "Home", action = "Index" },
-                    constraints: new { controller = "^H.*" });
+                    defaults: new {controller = "Home", action = "Index"},
+                    constraints: new {controller = "^H.*"});
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action}/{id:int?}",
+                    pattern: "{controller}/{action=index}/{id?}",
                     constraints: new { id = new IdConstraint() });
                 endpoints.MapRazorPages();
             });

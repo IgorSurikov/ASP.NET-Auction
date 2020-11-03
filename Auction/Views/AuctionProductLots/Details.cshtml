@@ -75,5 +75,11 @@
     </table>
 </div>
 <div>
+    @if (User.IsInRole("Admin") && Model.ToList().Count > 1)
+    {
+        <a asp-action="Cancel" asp-route-lotName="@Model.First().LotName">Cancel last raise</a>
+    }
+</div>
+<div>
     <a asp-action="Index">Back to auction</a>
 </div>

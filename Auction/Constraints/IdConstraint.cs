@@ -11,11 +11,19 @@ namespace Auction.Constraints
 	{
 		public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values, RouteDirection routeDirection)
 		{
-			if(System.Convert.ToInt32(values[routeKey]) < 0)
-			{
-				return false;
-			}
-			return true;
+            try
+            {
+                if (System.Convert.ToInt32(values[routeKey]) < 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return true;
+            }
+
 		}
 	}
 }

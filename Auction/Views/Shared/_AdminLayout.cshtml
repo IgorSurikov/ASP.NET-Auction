@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<h2>Admin</h2>
+<div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-3 id ">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Roles" asp-action="Index">Roles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Roles" asp-action="UserList">Users</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
