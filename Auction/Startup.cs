@@ -12,6 +12,8 @@ using Auction.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using Auction.Constraints;
 
 namespace Auction
 {
@@ -56,8 +58,15 @@ namespace Auction
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "home",
+                    pattern: "{controller}/{action}",
+                    defaults: new { controller = "Home", action = "Index" },
+                    constraints: new { controller = "^H.*" });
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action}/{id:int?}",
+                    constraints: new { id = new IdConstraint() });
                 endpoints.MapRazorPages();
             });
         }
