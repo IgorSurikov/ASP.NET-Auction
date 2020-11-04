@@ -9,7 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Auction.Data;
 using Auction.Models;
 using Auction.Areas.Identity.Data;
+using Auction.Signals;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Differencing;
 
@@ -19,11 +21,13 @@ namespace Auction.Controllers
     {
         private readonly AuctionContext _context;
         private readonly UserManager<AuctionUser> _userManager;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
-        public AuctionProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager)
+        public AuctionProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager, IHubContext<NotificationHub> hubContext)
         {
             _context = context;
             _userManager = userManager;
+            _hubContext = hubContext;
         }
 
         // GET: AuctionProductLots
@@ -166,6 +170,7 @@ namespace Auction.Controllers
                 _context.Add(newProductLot);
                 await _context.SaveChangesAsync();
                 ViewData["StatusMessage"] = "Congratulations, you have successfully increased price.";
+                await _hubContext.Clients.User(newProductLot.OwnerAuctionUserId).SendAsync("Notify", $"Lot Name: {productLot.LotName}. User {user.FullName} increased the price for {newPrice - productLot.CurrentPrice} $");
                 return View(newProductLot);
             }
 

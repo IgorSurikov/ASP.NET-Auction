@@ -43,7 +43,7 @@
                 <span asp-validation-for="LotName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" id="sendBtn"/>
             </div>
         </form>
     </div>
@@ -52,6 +52,12 @@
 <div>
     <a asp-action="Index">Back to auction</a>
 </div>
+<script>
+    document.getElementById("sendBtn").addEventListener("click",
+        function(e) {
+            hubConnection.invoke("Notify", "1");
+        });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
