@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +16,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Auction.Constraints;
 using Auction.Signals;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
+
 
 namespace Auction
 {
@@ -25,14 +32,32 @@ namespace Auction
             Configuration = configuration;
         }
 
+
         public IConfiguration Configuration { get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc()
+                .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var cultures = new List<CultureInfo> {
+                    new CultureInfo("en"),
+                    new CultureInfo("ru"),
+                    new CultureInfo("de")
+                };
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +75,8 @@ namespace Auction
                 app.UseHsts();
             }
 
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -64,16 +91,14 @@ namespace Auction
                 endpoints.MapControllerRoute(
                     name: "home",
                     pattern: "{controller}/{action}",
-                    defaults: new {controller = "Home", action = "Index"},
-                    constraints: new {controller = "^H.*"});
+                    defaults: new { controller = "Home", action = "Index" },
+                    constraints: new { controller = "^H.*" });
 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=index}/{id?}",
                     constraints: new { id = new IdConstraint() });
                 endpoints.MapRazorPages();
-
-
             });
         }
     }
