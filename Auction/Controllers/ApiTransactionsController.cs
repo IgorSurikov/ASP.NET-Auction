@@ -21,17 +21,17 @@ namespace Auction.Controllers
         }
 
         // GET: api/Transactions
-        
+
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TransactionViewModel>>> GetTransaction()
+        public ActionResult<IEnumerable<TransactionViewModel>> GetTransaction()
         {
             var context = _context.Transaction
                 .Include(t => t.Customer)
                 .Include(t => t.Owner)
-                .Include(t => t.Product);
+                .Include(t => t.Product).AsEnumerable();
 
-            var transactions = context.Select(t => new TransactionViewModel(
+            IOrderedEnumerable<TransactionViewModel> transactions = context.Select(t => new TransactionViewModel(
                 t.InsertDateTime,
                 t.Product.ProductName,
                 t.Customer.FullName,
@@ -39,7 +39,7 @@ namespace Auction.Controllers
                 t.TransactionAmount)).OrderBy(t => t.TransactionDate);
 
 
-            return await transactions.ToListAsync();
+            return transactions.ToList();
         }
     }
 }
