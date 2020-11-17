@@ -1,16 +1,11 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "DefaultConnection"
-    },
     "mssql2": {
       "type": "mssql.local",
       "connectionId": "AuctionContextConnection"
     },
-    "mssql3": {
-      "type": "mssql.local",
-      "connectionId": "AuctionContext1"
+    "secrets1": {
+      "type": "secrets.user"
     }
   }
 }
