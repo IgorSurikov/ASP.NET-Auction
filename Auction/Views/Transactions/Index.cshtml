@@ -48,6 +48,18 @@
     });
 
 
+    $(document).ready(function() {
+		    $.ajax({
+			    url: '/api/apitransactions',
+			    type: 'GET',
+			    dataType: 'json',
+			    success: function(data) {
+				    GetTransactions(data);
+			    },
+		    });
+    });
+
+
     function GetTransactions(data) {
 
         $("tbody").empty();

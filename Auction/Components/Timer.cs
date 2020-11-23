@@ -11,7 +11,7 @@ namespace Auction.Components
         public IViewComponentResult Invoke()
         {
             return new HtmlContentViewComponentResult(
-                new HtmlString($"<p>Current time:<b>{DateTime.Now.ToString("HH:mm:ss")}</b></p>")
+                new HtmlString($"<p>Current auction time:<b>{DateTime.Now.ToString("HH:mm:ss")}</b></p>")
             );
 
         }
