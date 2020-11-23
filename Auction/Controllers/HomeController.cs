@@ -24,11 +24,7 @@ namespace Auction.Controllers
 
         public IActionResult Index()
         {
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US");
-            //var c = CultureInfo.CurrentCulture;
-            //ViewData["Header"] = _localizer["Header"];
-            //return $"CurrentCulture:{CultureInfo.CurrentCulture.Name}, CurrentUICulture:{CultureInfo.CurrentUICulture.Name}";
-            return View();
+	        return View();
         }
 
         public IActionResult Privacy()

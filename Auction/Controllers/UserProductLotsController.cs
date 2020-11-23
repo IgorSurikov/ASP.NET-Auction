@@ -10,6 +10,7 @@ using Auction.Models;
 using Auction.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.Logging;
 
 namespace Auction.Controllers
 {
@@ -17,11 +18,13 @@ namespace Auction.Controllers
     {
         private readonly AuctionContext _context;
         private readonly UserManager<AuctionUser> _userManager;
+        private readonly ILogger<UserProductLotsController> _logger;
 
-        public UserProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager)
+        public UserProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager, ILogger<UserProductLotsController> _logger)
         {
             _context = context;
             _userManager = userManager;
+            this._logger = _logger;
         }
 
         // GET: UserProductLots
@@ -94,6 +97,7 @@ namespace Auction.Controllers
             productLot.CustomerAuctionUserId = _userManager.GetUserId(User);
             _context.Add(productLot);
             await _context.SaveChangesAsync();
+            _logger.Log(LogLevel.Information, "User {0} create Lot: {1}", User?.Identity?.Name, productLot.LotName);
             return RedirectToAction(nameof(Index));
 
         }
@@ -114,7 +118,7 @@ namespace Auction.Controllers
             {
                 return NotFound();
             }
-
+            _logger.Log(LogLevel.Information, "User {0} delete Lot: {1}", User?.Identity?.Name, productLot.LotName);
             return View(productLot);
         }
 

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Differencing;
+using Microsoft.Extensions.Logging;
 
 namespace Auction.Controllers
 {
@@ -22,12 +23,14 @@ namespace Auction.Controllers
         private readonly AuctionContext _context;
         private readonly UserManager<AuctionUser> _userManager;
         private readonly IHubContext<NotificationHub> _hubContext;
+        private readonly ILogger<AuctionProductLotsController> _logger;
 
-        public AuctionProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager, IHubContext<NotificationHub> hubContext)
+        public AuctionProductLotsController(AuctionContext context, UserManager<AuctionUser> userManager, IHubContext<NotificationHub> hubContext, ILogger<AuctionProductLotsController> logger)
         {
             _context = context;
             _userManager = userManager;
             _hubContext = hubContext;
+            _logger = logger;
         }
 
         // GET: AuctionProductLots
@@ -50,6 +53,7 @@ namespace Auction.Controllers
                 if (t.OwnerAuctionUserId == t.CustomerAuctionUserId)
                 {
                     _context.ProductLot.Remove(t);
+                    _logger.Log(LogLevel.Information, "the Lot: {0} has expired", t.LotName);
                 }
                 else
                 {
@@ -66,6 +70,7 @@ namespace Auction.Controllers
                     t.Product.AuctionUser = t.Customer;
                     _context.Add(transaction);
                     _context.ProductLot.RemoveRange(_context.ProductLot.Where(p => p.LotName == t.LotName));
+                    _logger.Log(LogLevel.Information, "the Lot: {0} was sold", t.LotName);
                 }
 
                 _context.Update(t);
@@ -83,11 +88,13 @@ namespace Auction.Controllers
             {
                 return NotFound();
             }
+            
 
             var auctionContext = _context.ProductLot.Include(p => p.Customer)
                 .Include(p => p.Owner)
                 .Include(p => p.Product);
             string lotName = auctionContext.FirstOrDefault(p => p.ID == id)?.LotName;
+            _logger.Log(LogLevel.Information, "User {0} check history of Lot: {1}", User?.Identity?.Name, lotName);
             return View(await auctionContext
                 .Where(p => p.LotName == lotName)
                 .OrderBy(p => p.UpdateDateTime)
@@ -129,12 +136,14 @@ namespace Auction.Controllers
 
             if (newPrice >= user.Wallet)
             {
+	            _logger.Log(LogLevel.Error, "User {0} doesn't have enough money. lot: {1}, price: {2} ", User?.Identity?.Name,productLot.LotName, newPrice);
                 ViewData["StatusMessage"] = "Error: You don't have enough money.";
                 return View(productLot);
             }
 
             if (newPrice <= productLot.CurrentPrice)
             {
+	            _logger.Log(LogLevel.Error, "User {0} price less then current price. lot: {1}, price: {2} ", User?.Identity?.Name, productLot.LotName, newPrice);
                 ViewData["StatusMessage"] = "Error: New price less then current price.";
                 return View(productLot);
             }
@@ -169,6 +178,7 @@ namespace Auction.Controllers
                 _context.Update(user);
                 _context.Add(newProductLot);
                 await _context.SaveChangesAsync();
+                _logger.Log(LogLevel.Information, "User {0} increased the lot price. lot: {1}, price: {2} ", User?.Identity?.Name, productLot.LotName, newPrice);
                 ViewData["StatusMessage"] = "Congratulations, you have successfully increased price.";
                 await _hubContext.Clients.User(newProductLot.OwnerAuctionUserId).SendAsync("Notify", $"Lot Name: {productLot.LotName}. User {user.FullName} increased the price for {newPrice - productLot.CurrentPrice} $");
                 return View(newProductLot);

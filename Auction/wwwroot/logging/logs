@@ -1,0 +1,11 @@
+23.11.2020 23:26:50-Application started. Press Ctrl+C to shut down.
+23.11.2020 23:26:50-Hosting environment: Development
+23.11.2020 23:26:50-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.11.2020 23:26:56-User logged in.
+23.11.2020 23:27:23-User admin@admin.com create Lot: Лот 1
+23.11.2020 23:27:35-User admin@admin.com check history of Lot: Лот 1
+23.11.2020 23:27:44-User logged in.
+23.11.2020 23:27:47-User test3@test3.com check history of Lot: Лот 1
+23.11.2020 23:27:52-User test3@test3.com price less then current price. lot: Лот 1, price: 1 
+23.11.2020 23:27:58-User test3@test3.com doesn't have enough money. lot: Лот 1, price: 999999999 
+23.11.2020 23:28:02-User test3@test3.com increased the lot price. lot: Лот 1, price: 200 
