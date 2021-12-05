@@ -9,9 +9,12 @@
     {
         <tr>
             <td>@user.Email</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Access rights</a>
-            </td>
+	        <td>
+		        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Access rights</a>
+	        </td>
+	        <td>
+		        <a class="btn btn-sm btn-primary" asp-action="Ban" asp-route-userid="@user.Id">@(user.IsBanned ? "unban" : "ban")</a>
+	        </td>
         </tr>
     }
 </table>

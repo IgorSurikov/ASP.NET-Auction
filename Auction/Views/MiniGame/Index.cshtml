@@ -1,0 +1,178 @@
+﻿@{
+	ViewData["Title"] = "Mini game";
+}
+
+<h1>Mini game</h1>
+<p>Here you can raise your rating.</p>
+<canvas id="canvas" width="1152" height="512" class="m-auto"></canvas>
+<p id = "score"></p>
+<button type="button" id="save" class="btn btn-dark btn-lg">Save score</button>
+
+
+
+
+
+
+
+<script>
+
+	$(document).ready(function() {
+		$("#save").click(function () {
+			var s = $("#score").text();
+			s = parseInt(s.substr(s.search(':') + 2));
+			$.ajax({
+				url: '/api/apiminigame/' + s,
+				type: 'POST',
+				contentType: "application/json; charset=utf-8",
+				dataType: 'json',
+				success: function(data) {
+					var container = document.getElementById("main-container");
+					container.insertAdjacentHTML('afterbegin',
+						'<div class="alert alert-info alert-dismissible" role="alert">' +
+						'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+						'Successfully update rating' +
+						'</div>');
+				},
+			});
+		});
+	});
+
+	var cvs = document.getElementById("canvas");
+	var ctx = cvs.getContext("2d");
+	var score_div = document.getElementById("score");
+
+	var bird = new Image();
+	var bg = new Image();
+	var fg = new Image();
+	var pipeUp = new Image();
+	var pipeBottom = new Image();
+
+	bird.src = "images/mini_game/flappy_bird_bird.png";
+	bg.src = "images/mini_game/flappy_bird_bg.png";
+	fg.src = "images/mini_game/flappy_bird_fg.png";
+	pipeUp.src = "images/mini_game/flappy_bird_pipeUp.png";
+	pipeBottom.src = "images/mini_game/flappy_bird_pipeBottom.png";
+
+	var gap = 90;
+
+
+	document.addEventListener("keydown", moveUp);
+
+
+	function moveUp(e) {
+		if (e.keyCode == 32) {
+			yPos -= 35;
+		}
+	}
+
+	function draw_bg(ctx, bg, y) {
+		x = 0
+		for (let index = 0; index < Math.floor(cvs.width / bg.width) + 1; index++) {
+			ctx.drawImage(bg, x, y);
+			x += bg.width
+		}
+	}
+
+
+
+
+	var pipe = [];
+
+	function generate_pipes() {
+		if (pipe.length == 0) {
+			pipe.push({
+				x: cvs.width - 600,
+				y: 0
+			})
+		}
+
+		while (pipe.length < 10) {
+			console.log(pipeUp.height)
+			pipe.push({
+				x: pipe.at(-1).x + 250,
+				y: Math.floor(Math.random() * 242) - 242
+			})
+		}
+
+	}
+
+	function reset() {
+		draw_bg(ctx, bg, 0)
+		draw_bg(ctx, fg, cvs.height - fg.height + 80)
+		ctx.fillStyle = "#000";
+		ctx.font = "30px Verdana";
+
+
+
+		score_div.innerHTML = 'Your score: ' + score
+
+		ctx.fillText("Press Enter to start the game", cvs.width / 2 - 250, cvs.height / 2);
+
+		pipe = []
+		score = 0;
+		xPos = 10;
+		yPos = 150;
+
+	}
+
+	var score = 0;
+
+	var xPos = 10;
+	var yPos = 150;
+	var grav = 1.55;
+
+
+	function draw() {
+		draw_bg(ctx, bg, 0)
+
+
+		for (var i = 0; i < pipe.length; i++) {
+			ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y);
+			ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
+
+			pipe[i].x -= 3;
+
+			if (pipe[i].x < 0) {
+				score++;
+				score_div.innerHTML = 'Your score: ' + score
+				pipe.shift()
+				generate_pipes()
+			}
+
+
+			if (xPos + bird.width >= pipe[i].x
+				&& xPos <= pipe[i].x + pipeUp.width
+				&& (yPos <= pipe[i].y + pipeUp.height
+					|| yPos + bird.height >= pipe[i].y + pipeUp.height + gap) || yPos + bird.height >= cvs.height - fg.height + 80) {
+				game_mode = 'stop'
+				reset()
+				return
+			}
+		}
+
+
+		draw_bg(ctx, fg, cvs.height - fg.height + 80)
+		ctx.drawImage(bird, xPos, yPos);
+
+		yPos += grav;
+
+
+		requestAnimationFrame(draw);
+	}
+
+	document.addEventListener("keydown", run_game)
+
+	var game_mode = 'stop'
+
+	function run_game(e) {
+		if (e.key == 'Enter' && game_mode != 'run') {
+			game_mode = 'run'
+			generate_pipes()
+			draw()
+		}
+	}
+
+	pipeBottom.onload = reset
+
+
+</script>

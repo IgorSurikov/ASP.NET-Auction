@@ -26,6 +26,7 @@ namespace Auction.Areas.Identity.Pages.Account.Manage
 
         public string FullName { get; set; }
         public string Wallet { get; set; }
+        public string Rating { get; set; }
 
         [TempData] public string StatusMessage { get; set; }
 
@@ -47,6 +48,7 @@ namespace Auction.Areas.Identity.Pages.Account.Manage
 
             FullName = user.FullName;
             Wallet = user.Wallet.ToString();
+            Rating = user.Rating.ToString();
 
             Input = new InputModel
             {

@@ -1,11 +1,473 @@
-23.11.2020 23:26:50-Application started. Press Ctrl+C to shut down.
-23.11.2020 23:26:50-Hosting environment: Development
-23.11.2020 23:26:50-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
-23.11.2020 23:26:56-User logged in.
-23.11.2020 23:27:23-User admin@admin.com create Lot: Лот 1
-23.11.2020 23:27:35-User admin@admin.com check history of Lot: Лот 1
-23.11.2020 23:27:44-User logged in.
-23.11.2020 23:27:47-User test3@test3.com check history of Lot: Лот 1
-23.11.2020 23:27:52-User test3@test3.com price less then current price. lot: Лот 1, price: 1 
-23.11.2020 23:27:58-User test3@test3.com doesn't have enough money. lot: Лот 1, price: 999999999 
-23.11.2020 23:28:02-User test3@test3.com increased the lot price. lot: Лот 1, price: 200 
+23.10.2021 16:58:51-Application started. Press Ctrl+C to shut down.
+23.10.2021 16:58:51-Hosting environment: Development
+23.10.2021 16:58:51-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 17:02:41-Application started. Press Ctrl+C to shut down.
+23.10.2021 17:02:41-Hosting environment: Development
+23.10.2021 17:02:41-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 5:03:09 PM-User logged in.
+23.10.2021 17:05:55-Application started. Press Ctrl+C to shut down.
+23.10.2021 17:05:55-Hosting environment: Development
+23.10.2021 17:05:55-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 17:06:53-Application started. Press Ctrl+C to shut down.
+23.10.2021 17:06:54-Hosting environment: Development
+23.10.2021 17:06:54-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 17:12:58-Application started. Press Ctrl+C to shut down.
+23.10.2021 17:12:58-Hosting environment: Development
+23.10.2021 17:12:58-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 17:13:03-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:08-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:13-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:36-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:39-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:42-UpdateAuctionHostedService is dowork
+23.10.2021 17:13:47-UpdateAuctionHostedService is dowork
+23.10.2021 18:38:10-Application started. Press Ctrl+C to shut down.
+23.10.2021 18:38:10-Hosting environment: Development
+23.10.2021 18:38:10-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 18:40:02-Application started. Press Ctrl+C to shut down.
+23.10.2021 18:40:02-Hosting environment: Development
+23.10.2021 18:40:02-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 6:44:42 PM-the Lot: лот12345 was sold
+23.10.2021 18:49:46-Application started. Press Ctrl+C to shut down.
+23.10.2021 18:49:46-Hosting environment: Development
+23.10.2021 18:49:46-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 6:50:10 PM-User 1@1.com create Lot: Лот 1
+10/23/2021 6:50:27 PM-Invalid password for user fb5d337d-1987-473e-9980-8b3ce427ff6b.
+10/23/2021 6:50:27 PM-User fb5d337d-1987-473e-9980-8b3ce427ff6b failed to provide the correct password.
+10/23/2021 6:50:33 PM-User logged in.
+10/23/2021 6:50:39 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 300 
+10/23/2021 6:50:43 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 500 
+10/23/2021 6:51:02 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 18:55:56-Application started. Press Ctrl+C to shut down.
+23.10.2021 18:55:56-Hosting environment: Development
+23.10.2021 18:55:56-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 6:59:03 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 500 
+10/23/2021 6:59:09 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 6:59:36 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 600 
+10/23/2021 6:59:41 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 19:34:53-Application started. Press Ctrl+C to shut down.
+23.10.2021 19:34:53-Hosting environment: Development
+23.10.2021 19:34:53-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 19:36:18-Application started. Press Ctrl+C to shut down.
+23.10.2021 19:36:18-Hosting environment: Development
+23.10.2021 19:36:18-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 19:38:18-Application started. Press Ctrl+C to shut down.
+23.10.2021 19:38:18-Hosting environment: Development
+23.10.2021 19:38:18-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 19:44:48-Application started. Press Ctrl+C to shut down.
+23.10.2021 19:44:48-Hosting environment: Development
+23.10.2021 19:44:48-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 19:46:02-Application started. Press Ctrl+C to shut down.
+23.10.2021 19:46:02-Hosting environment: Development
+23.10.2021 19:46:02-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:13:02-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:13:02-Hosting environment: Development
+23.10.2021 20:13:02-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:14:04-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:14:04-Hosting environment: Development
+23.10.2021 20:14:04-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:14:05-the Lot: Лот 1 was sold to test test
+23.10.2021 20:16:17-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:16:17-Hosting environment: Development
+23.10.2021 20:16:17-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:18:36-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:18:36-Hosting environment: Development
+23.10.2021 20:18:36-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:18:37-the Lot: Лот 1 was sold to test test
+10/23/2021 8:19:13 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 20:20:16-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:20:16-Hosting environment: Development
+23.10.2021 20:20:16-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:20:17-the Lot: Лот 1 was sold to test test
+23.10.2021 20:20:21-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:26-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:31-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:36-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:41-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:46-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:51-UpdateAuctionHostedService is dowork
+23.10.2021 20:20:56-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:01-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:06-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:11-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:16-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:23-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:47-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:47-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:47-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:54-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:54-UpdateAuctionHostedService is dowork
+23.10.2021 20:21:54-UpdateAuctionHostedService is dowork
+23.10.2021 20:22:03-UpdateAuctionHostedService is dowork
+23.10.2021 20:22:03-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+23.10.2021 20:22:05-UpdateAuctionHostedService is dowork
+23.10.2021 20:23:11-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:23:11-Hosting environment: Development
+23.10.2021 20:23:11-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:23:12-UpdateAuctionHostedService 1
+23.10.2021 20:23:12-the Lot: Лот 1 was sold to test test
+23.10.2021 20:23:15-UpdateAuctionHostedService 1
+23.10.2021 20:23:20-UpdateAuctionHostedService 1
+23.10.2021 20:23:25-UpdateAuctionHostedService 1
+23.10.2021 20:23:30-UpdateAuctionHostedService 1
+23.10.2021 20:23:35-UpdateAuctionHostedService 1
+23.10.2021 20:24:08-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:24:08-Hosting environment: Development
+23.10.2021 20:24:08-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 8:24:26 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 20:25:03-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:25:03-Hosting environment: Development
+23.10.2021 20:25:03-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:25:04-the Lot: Лот 1 was sold to test test
+23.10.2021 20:27:49-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:27:49-Hosting environment: Development
+23.10.2021 20:27:49-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 20:27:50-the Lot: Лот 1 was sold to test test
+23.10.2021 20:28:36-Application started. Press Ctrl+C to shut down.
+23.10.2021 20:28:36-Hosting environment: Development
+23.10.2021 20:28:36-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 8:28:59 PM-User test3@test3.com create Lot: Лот 1
+23.10.2021 22:33:56-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:33:56-Hosting environment: Development
+23.10.2021 22:33:56-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 22:44:09-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:44:09-Hosting environment: Development
+23.10.2021 22:44:09-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:44:14 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 22:44:14-An unhandled exception has occurred while executing the request.
+23.10.2021 22:45:16-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:45:16-Hosting environment: Development
+23.10.2021 22:45:16-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:45:26 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:45:38 PM-User logged in.
+10/23/2021 10:45:47 PM-User 1@1.com check history of Lot: Лот 1
+23.10.2021 22:47:15-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:47:15-Hosting environment: Development
+23.10.2021 22:47:15-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:47:33 PM-User 1@1.com check history of Lot: Лот 1
+10/23/2021 10:47:40 PM-User 1@1.com increased the lot price. lot: Лот 1, price: 100 
+10/23/2021 10:47:44 PM-User 1@1.com check history of Lot: Лот 1
+10/23/2021 10:48:02 PM-User logged in.
+10/23/2021 10:48:06 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:48:10 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:48:24 PM-User logged in.
+10/23/2021 10:48:34 PM-User 1@1.com increased the lot price. lot: Лот 1, price: 200 
+10/23/2021 10:49:16 PM-User logged in.
+10/23/2021 10:49:26 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 200 
+10/23/2021 10:49:32 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:49:36 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:50:12 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 200 
+10/23/2021 10:50:18 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:50:54 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 22:52:11-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:52:11-Hosting environment: Development
+23.10.2021 22:52:11-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:52:18 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:52:21 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:52:26 PM-User logged in.
+10/23/2021 10:52:31 PM-User 1@1.com increased the lot price. lot: Лот 1, price: 100 
+10/23/2021 10:53:06 PM-User logged in.
+10/23/2021 10:53:13 PM-User test3@test3.com increased the lot price. lot: Лот 1, price: 100 
+10/23/2021 10:53:22 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:53:25 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 22:54:46-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:54:46-Hosting environment: Development
+23.10.2021 22:54:46-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 22:56:17-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:56:17-Hosting environment: Development
+23.10.2021 22:56:17-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:56:29 PM-User test3@test3.com check history of Lot: Лот 1
+10/23/2021 10:56:40 PM-User test test doesn't have enough rating to raise price. lot: Лот 1, rating: 3
+23.10.2021 22:58:39-Application started. Press Ctrl+C to shut down.
+23.10.2021 22:58:39-Hosting environment: Development
+23.10.2021 22:58:39-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 10:58:48 PM-User test3@test3.com check history of Lot: Лот 1
+23.10.2021 23:10:30-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:10:30-Hosting environment: Development
+23.10.2021 23:10:30-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:25:48-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:25:48-Hosting environment: Development
+23.10.2021 23:25:48-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:29:13-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:29:13-Hosting environment: Development
+23.10.2021 23:29:13-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:31:11-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:31:11-Hosting environment: Development
+23.10.2021 23:31:11-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:34:56-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:34:56-Hosting environment: Development
+23.10.2021 23:34:56-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:36:53-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:36:53-Hosting environment: Development
+23.10.2021 23:36:53-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:37:50-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:37:50-Hosting environment: Development
+23.10.2021 23:37:50-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:38:39-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:38:39-Hosting environment: Development
+23.10.2021 23:38:39-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+23.10.2021 23:39:45-Application started. Press Ctrl+C to shut down.
+23.10.2021 23:39:45-Hosting environment: Development
+23.10.2021 23:39:45-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10/23/2021 11:46:48 PM-User test3@test3.com create Lot: Лот 1
+23.10.2021 23:48:00-the Lot: Лот 1 has expired
+10.11.2021 21:55:22-Application started. Press Ctrl+C to shut down.
+10.11.2021 21:55:22-Hosting environment: Development
+10.11.2021 21:55:22-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10.11.2021 21:55:30-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+10.11.2021 21:56:40-Application started. Press Ctrl+C to shut down.
+10.11.2021 21:56:40-Hosting environment: Development
+10.11.2021 21:56:40-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10.11.2021 21:56:45-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+10.11.2021 22:02:49-Application started. Press Ctrl+C to shut down.
+10.11.2021 22:02:49-Hosting environment: Development
+10.11.2021 22:02:49-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10.11.2021 22:02:53-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+10.11.2021 22:03:58-Application started. Press Ctrl+C to shut down.
+10.11.2021 22:03:58-Hosting environment: Development
+10.11.2021 22:03:58-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/10/2021 10:04:08 PM-User logged in.
+10.11.2021 22:07:02-Application started. Press Ctrl+C to shut down.
+10.11.2021 22:07:02-Hosting environment: Development
+10.11.2021 22:07:02-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+10.11.2021 22:09:28-Application started. Press Ctrl+C to shut down.
+10.11.2021 22:09:28-Hosting environment: Development
+10.11.2021 22:09:28-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+16.11.2021 23:05:00-Application started. Press Ctrl+C to shut down.
+16.11.2021 23:05:00-Hosting environment: Development
+16.11.2021 23:05:00-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/16/2021 11:06:06 PM-User test3@test3.com create Lot: Лот 1
+18.11.2021 23:38:01-Application started. Press Ctrl+C to shut down.
+18.11.2021 23:38:01-Hosting environment: Development
+18.11.2021 23:38:01-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+20.11.2021 23:13:31-Application started. Press Ctrl+C to shut down.
+20.11.2021 23:13:31-Hosting environment: Development
+20.11.2021 23:13:31-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/20/2021 11:25:54 PM-User created a new account with password.
+11/20/2021 11:26:05 PM-User logged in.
+11/20/2021 11:27:14 PM-User 11@1.com create Lot: Лот 111
+11/20/2021 11:27:29 PM-User 11@1.com delete Lot: Лот 111
+11/20/2021 11:45:19 PM-User 11@1.com check history of Lot: Лот 1
+11/20/2021 11:46:27 PM-User 11@1.com check history of Lot: Лот 1
+11/20/2021 11:46:35 PM-User Игорь123 Суриков price less then current price. lot: Лот 1, price: 1 
+11/20/2021 11:46:42 PM-User 11@1.com doesn't have enough money. lot: Лот 1, price: 999999 
+11/20/2021 11:46:47 PM-User 11@1.com increased the lot price. lot: Лот 1, price: 200 
+11/20/2021 11:46:50 PM-User 11@1.com check history of Lot: Лот 1
+11/20/2021 11:47:07 PM-User logged in.
+11/20/2021 11:47:18 PM-User test3@test3.com check history of Lot: Лот 1
+11/20/2021 11:47:24 PM-User test3@test3.com check history of Lot: Лот 1
+11/20/2021 11:52:06 PM-User test test unban user Саня Петров
+11/20/2021 11:52:15 PM-User logged in.
+11/20/2021 11:52:25 PM-User logged in.
+11/20/2021 11:56:55 PM-User logged in.
+21.11.2021 0:04:46-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:04:46-Hosting environment: Development
+21.11.2021 0:04:46-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:05:59 AM-User test2@test2.com create Lot: Лот 444
+11/21/2021 12:06:17 AM-User logged in.
+11/21/2021 12:08:07 AM-User test3@test3.com increased the lot price. lot: Лот 444, price: 555 
+11/21/2021 12:08:12 AM-User test3@test3.com check history of Lot: Лот 444
+11/21/2021 12:08:32 AM-User test3@test3.com check history of Lot: Лот 444
+21.11.2021 0:10:13-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:10:13-Hosting environment: Development
+21.11.2021 0:10:13-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 0:16:26-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:16:26-Hosting environment: Development
+21.11.2021 0:16:26-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:17:07 AM-User test3@test3.com create Lot: Лот 1
+11/21/2021 12:17:34 AM-User logged in.
+11/21/2021 12:17:46 AM-User test@test.com increased the lot price. lot: Лот 1, price: 200 
+21.11.2021 0:20:41-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:20:41-Hosting environment: Development
+21.11.2021 0:20:41-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:20:56 AM-User logged in.
+11/21/2021 12:21:01 AM-User logged in.
+11/21/2021 12:21:56 AM-User test@test.com create Lot: Лот 2
+11/21/2021 12:22:06 AM-Invalid password for user fb5d337d-1987-473e-9980-8b3ce427ff6b.
+11/21/2021 12:22:06 AM-User fb5d337d-1987-473e-9980-8b3ce427ff6b failed to provide the correct password.
+11/21/2021 12:22:12 AM-User logged in.
+11/21/2021 12:22:28 AM-User logged in.
+11/21/2021 12:22:42 AM-User test3@test3.com increased the lot price. lot: Лот 2, price: 300 
+11/21/2021 12:22:46 AM-User test3@test3.com check history of Lot: Лот 2
+11/21/2021 12:28:45 AM-User test3@test3.com check history of Lot: Лот 2
+21.11.2021 0:33:34-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:33:34-Hosting environment: Development
+21.11.2021 0:33:34-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 0:38:34-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:38:34-Hosting environment: Development
+21.11.2021 0:38:34-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:38:43 AM-User test3@test3.com check history of Lot: Лот 2
+11/21/2021 12:38:52 AM-User test3@test3.com increased the lot price. lot: Лот 2, price: 400 
+11/21/2021 12:39:04 AM-User test3@test3.com check history of Lot: Лот 2
+11/21/2021 12:42:01 AM-User test3@test3.com doesn't have enough money. lot: Лот 2, price: 500 
+21.11.2021 0:42:05-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+21.11.2021 0:42:30-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:42:30-Hosting environment: Development
+21.11.2021 0:42:30-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 0:50:36-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:50:36-Hosting environment: Development
+21.11.2021 0:50:36-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:51:11 AM-User logged in.
+11/21/2021 12:51:21 AM-User logged in.
+21.11.2021 0:51:47-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:51:47-Hosting environment: Development
+21.11.2021 0:51:47-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:54:58 AM-User test@test.com create Lot: Лот 1
+11/21/2021 12:55:10 AM-User logged in.
+11/21/2021 12:56:20 AM-User test3@test3.com increased the lot price. lot: Лот 1, price: 300 
+21.11.2021 0:57:42-Application started. Press Ctrl+C to shut down.
+21.11.2021 0:57:42-Hosting environment: Development
+21.11.2021 0:57:42-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 12:59:24 AM-User test3@test3.com check history of Lot: Лот 1
+11/21/2021 1:01:20 AM-User test3@test3.com increased the lot price. lot: Лот 1, price: 500 
+21.11.2021 1:03:13-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:03:13-Hosting environment: Development
+21.11.2021 1:03:13-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 1:16:11-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+21.11.2021 1:16:13-An unhandled exception has occurred while executing the request.
+21.11.2021 1:16:41-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:16:41-Hosting environment: Development
+21.11.2021 1:16:41-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 1:17:19-An unhandled exception has occurred while executing the request.
+21.11.2021 1:19:22-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:19:22-Hosting environment: Development
+21.11.2021 1:19:22-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:19:35 AM-User test3@test3.com increased the lot price. lot: Лот 1, price: 600 
+11/21/2021 1:19:38 AM-User test3@test3.com check history of Lot: Лот 1
+21.11.2021 1:21:25-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:21:25-Hosting environment: Development
+21.11.2021 1:21:25-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:21:43 AM-User test3@test3.com increased the lot price. lot: Лот 1, price: 700 
+21.11.2021 1:24:29-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:24:29-Hosting environment: Development
+21.11.2021 1:24:29-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:24:41 AM-User test3@test3.com increased the lot price. lot: Лот 1, price: 701 
+21.11.2021 1:25:33-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:25:33-Hosting environment: Development
+21.11.2021 1:25:33-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:25:41 AM-User test3@test3.com check history of Lot: Лот 1
+21.11.2021 1:27:06-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:27:06-Hosting environment: Development
+21.11.2021 1:27:06-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:27:49 AM-User logged in.
+11/21/2021 1:28:15 AM-User test3@test3.com create Lot: Лот 2
+21.11.2021 1:28:25-the Lot: Лот 2 has expired
+21.11.2021 1:29:03-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:29:03-Hosting environment: Development
+21.11.2021 1:29:03-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:29:35 AM-User test3@test3.com create Lot: Лот 1
+21.11.2021 1:34:02-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:34:02-Hosting environment: Development
+21.11.2021 1:34:02-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:34:32 AM-User test3@test3.com create Lot: Лот 1
+21.11.2021 1:35:25-the Lot: Лот 1 has expired
+21.11.2021 1:35:25-the Lot: Лот 1 has expired
+21.11.2021 1:36:02-the Lot: Лот 1 has expired
+21.11.2021 1:36:02-the Lot: Лот 1 has expired
+21.11.2021 1:36:02-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+21.11.2021 1:36:10-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:36:10-Hosting environment: Development
+21.11.2021 1:36:10-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+21.11.2021 1:36:20-the Lot: Лот 1 has expired
+21.11.2021 1:36:48-Application started. Press Ctrl+C to shut down.
+21.11.2021 1:36:48-Hosting environment: Development
+21.11.2021 1:36:48-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/21/2021 1:37:18 AM-User test3@test3.com create Lot: Лот 1
+11/21/2021 1:37:30 AM-User logged in.
+11/21/2021 1:37:38 AM-User test@test.com increased the lot price. lot: Лот 1, price: 200 
+11/21/2021 1:37:42 AM-User test@test.com check history of Lot: Лот 1
+11/21/2021 1:38:00 AM-User test@test.com check history of Lot: Лот 1
+11/21/2021 1:38:02 AM-User test@test.com check history of Lot: Лот 1
+11/21/2021 1:38:15 AM-User test@test.com increased the lot price. lot: Лот 1, price: 200 
+11/21/2021 1:38:18 AM-User test@test.com check history of Lot: Лот 1
+21.11.2021 1:38:43-the Lot: Лот 1 was sold to Василий Иванов
+23.11.2021 1:47:28-Application started. Press Ctrl+C to shut down.
+23.11.2021 1:47:28-Hosting environment: Development
+23.11.2021 1:47:28-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/23/2021 1:51:17 AM-User test@test.com create Lot: Лот 1
+11/23/2021 1:51:33 AM-User logged in.
+11/23/2021 1:51:44 AM-User 11@1.com increased the lot price. lot: Лот 1, price: 200 
+11/23/2021 1:51:54 AM-User logged in.
+11/23/2021 1:52:14 AM-User (null) check history of Lot: Лот 1
+11/23/2021 1:52:33 AM-User logged in.
+11/23/2021 1:52:39 AM-User test3@test3.com check history of Lot: Лот 1
+23.11.2021 1:52:52-the Lot: Лот 1 was sold to Игорь123 Суриков
+11/23/2021 1:53:25 AM-User logged in.
+11/23/2021 1:55:27 AM-User 11@1.com create Lot: лот 12345
+11/23/2021 1:55:41 AM-User logged in.
+11/23/2021 1:55:51 AM-User test3@test3.com increased the lot price. lot: лот 12345, price: 5 
+11/23/2021 1:55:55 AM-User test3@test3.com increased the lot price. lot: лот 12345, price: 10 
+11/23/2021 1:57:05 AM-User logged in.
+11/23/2021 1:57:29 AM-User logged in.
+11/23/2021 1:57:39 AM-User logged in.
+23.11.2021 2:00:03-Application started. Press Ctrl+C to shut down.
+23.11.2021 2:00:03-Hosting environment: Development
+23.11.2021 2:00:03-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/23/2021 2:01:19 AM-User 1@1.com create Lot: Лот123
+11/23/2021 2:02:36 AM-User 1@1.com increased the lot price. lot: Лот123, price: 200 
+23.11.2021 2:02:36-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+23.11.2021 2:03:01-Application started. Press Ctrl+C to shut down.
+23.11.2021 2:03:01-Hosting environment: Development
+23.11.2021 2:03:01-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/23/2021 2:03:17 AM-User 1@1.com check history of Lot: Лот123
+11/23/2021 2:03:34 AM-User logged in.
+11/23/2021 2:03:48 AM-User test3@test3.com increased the lot price. lot: Лот123, price: 201 
+23.11.2021 2:05:20-Application started. Press Ctrl+C to shut down.
+23.11.2021 2:05:20-Hosting environment: Development
+23.11.2021 2:05:20-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/23/2021 2:05:32 AM-User test3@test3.com increased the lot price. lot: Лот123, price: 300 
+11/23/2021 2:05:36 AM-User test3@test3.com check history of Lot: Лот123
+11/23/2021 2:05:50 AM-User test3@test3.com check history of Lot: Лот123
+11/23/2021 2:05:51 AM-User test3@test3.com check history of Lot: Лот123
+23.11.2021 2:06:00-the Lot: Лот123 was sold to test test
+11/23/2021 2:06:15 AM-User logged in.
+11/23/2021 2:13:03 AM-User 11@1.com create Lot: лот лампа
+11/23/2021 2:13:14 AM-User logged in.
+11/23/2021 2:13:18 AM-User test3@test3.com check history of Lot: лот лампа
+11/23/2021 2:13:27 AM-User test3@test3.com increased the lot price. lot: лот лампа, price: 50 
+11/23/2021 2:13:29 AM-User test3@test3.com check history of Lot: лот лампа
+11/23/2021 2:13:37 AM-User test3@test3.com increased the lot price. lot: лот лампа, price: 100 
+11/23/2021 2:13:40 AM-User test3@test3.com check history of Lot: лот лампа
+11/23/2021 2:13:45 AM-User test3@test3.com check history of Lot: лот лампа
+23.11.2021 2:13:55-the Lot: лот лампа was sold to test test
+11/23/2021 2:19:10 AM-User test3@test3.com create Lot: Лот22
+11/23/2021 2:19:22 AM-User logged in.
+11/23/2021 2:19:32 AM-User Игорь123 Суриков doesn't have enough rating to raise price. lot: Лот22, rating: 0
+11/23/2021 2:20:20 AM-User 11@1.com check history of Lot: Лот22
+11/23/2021 2:20:27 AM-User Игорь123 Суриков doesn't have enough rating to raise price. lot: Лот22, rating: 0
+11/23/2021 2:20:52 AM-User 11@1.com increased the lot price. lot: Лот22, price: 100 
+11/23/2021 2:20:55 AM-User 11@1.com check history of Lot: Лот22
+11/23/2021 2:22:07 AM-User Игорь123 Суриков price less then current price. lot: Лот22, price: 12 
+11/23/2021 2:22:28 AM-User 11@1.com increased the lot price. lot: Лот22, price: 500 
+11/23/2021 2:24:09 AM-User 11@1.com check history of Lot: Лот22
+11/23/2021 2:24:16 AM-User logged in.
+11/23/2021 2:24:48 AM-User 11@1.com doesn't have enough money. lot: Лот22, price: 501 
+11/23/2021 2:25:06 AM-User test3@test3.com increased the lot price. lot: Лот22, price: 501 
+11/23/2021 2:25:21 AM-User 11@1.com check history of Lot: Лот22
+11/23/2021 2:25:30 AM-User 11@1.com check history of Lot: Лот22
+11/23/2021 2:25:44 AM-User 11@1.com increased the lot price. lot: Лот22, price: 600 
+23.11.2021 2:27:15-the Lot: Лот22 was sold to Игорь123 Суриков
+23.11.2021 2:28:13-Application started. Press Ctrl+C to shut down.
+23.11.2021 2:28:13-Hosting environment: Development
+23.11.2021 2:28:13-Content root path: C:\Users\Игорь\source\repos\Auction\Auction
+11/23/2021 2:28:59 AM-User logged in.
+11/23/2021 2:29:17 AM-User test3@test3.com create Lot: Лот 1
+23.11.2021 2:31:03-the Lot: Лот 1 has expired

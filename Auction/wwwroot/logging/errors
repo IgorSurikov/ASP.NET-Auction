@@ -1,2 +1,46 @@
 23.11.2020 23:27:52-User test3@test3.com price less then current price. lot: Лот 1, price: 1 
 23.11.2020 23:27:58-User test3@test3.com doesn't have enough money. lot: Лот 1, price: 999999999 
+10/7/2021 12:07:24 AM-User test3@test3.com price less then current price. lot: Лот 123, price: 1 
+23.10.2021 20:22:03-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+23.10.2021 22:44:14-An unhandled exception has occurred while executing the request.
+10/23/2021 10:56:40 PM-User test test doesn't have enough rating to raise price. lot: Лот 1, rating: 3
+10.11.2021 21:55:30-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+10.11.2021 21:56:45-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+10.11.2021 22:02:53-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+11/20/2021 11:46:35 PM-User Игорь123 Суриков price less then current price. lot: Лот 1, price: 1 
+11/20/2021 11:46:42 PM-User 11@1.com doesn't have enough money. lot: Лот 1, price: 999999 
+11/21/2021 12:42:01 AM-User test3@test3.com doesn't have enough money. lot: Лот 2, price: 500 
+21.11.2021 0:42:05-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+21.11.2021 1:16:11-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+21.11.2021 1:16:13-An unhandled exception has occurred while executing the request.
+21.11.2021 1:17:19-An unhandled exception has occurred while executing the request.
+21.11.2021 1:36:02-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+23.11.2021 2:02:36-An exception occurred while iterating over the results of a query for context type 'Auction.Data.AuctionContext'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+11/23/2021 2:19:32 AM-User Игорь123 Суриков doesn't have enough rating to raise price. lot: Лот22, rating: 0
+11/23/2021 2:20:27 AM-User Игорь123 Суриков doesn't have enough rating to raise price. lot: Лот22, rating: 0
+11/23/2021 2:22:07 AM-User Игорь123 Суриков price less then current price. lot: Лот22, price: 12 
+11/23/2021 2:24:48 AM-User 11@1.com doesn't have enough money. lot: Лот22, price: 501 

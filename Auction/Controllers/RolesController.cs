@@ -6,6 +6,7 @@ using Auction.Areas.Identity.Data;
 using Auction.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Auction.Controllers
 {
@@ -14,11 +15,13 @@ namespace Auction.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AuctionUser> _userManager;
         private readonly SignInManager<AuctionUser> _signInManager;
-        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<AuctionUser> userManager, SignInManager<AuctionUser> signInManager)
+        private readonly ILogger<AuctionProductLotsController> _logger;
+        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<AuctionUser> userManager, SignInManager<AuctionUser> signInManager, ILogger<AuctionProductLotsController> logger)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
         public IActionResult Index() => View(_roleManager.Roles.ToList());
 
@@ -95,6 +98,29 @@ namespace Auction.Controllers
             }
 
             return NotFound();
+        }
+
+        public async Task<IActionResult> Ban(string userId)
+        {
+            var current_user = await _userManager.GetUserAsync(HttpContext.User);
+            var user = await _userManager.FindByIdAsync(userId);
+	        if (user == null) return NotFound();
+
+            if (user.IsBanned)
+            {
+	            user.IsBanned = false;
+	            _logger.Log(LogLevel.Information, "User {0} unban user {1}", current_user.FullName, user.FullName);
+            }
+            else
+            {
+	            user.IsBanned = true;
+	            _logger.Log(LogLevel.Information, "User {0} ban user {1}", current_user.FullName, user.FullName);
+            }
+            await _userManager.UpdateAsync(user);
+
+	        return RedirectToAction("UserList");
+
+
         }
     }
 }

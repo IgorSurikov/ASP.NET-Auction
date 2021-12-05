@@ -16,6 +16,27 @@
 <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+
+    
+    const hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl("/hub")
+        .build();
+
+    hubConnection.on("Notify",
+        function(data) {
+
+            let container = document.getElementById("main-container");
+            container.insertAdjacentHTML('afterbegin',
+                '<div class="alert alert-info alert-dismissible" role="alert">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                data +
+                '</div>');
+
+        });
+
+    hubConnection.start();
+</script>
 @RenderSection("Scripts", required: false)
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -35,10 +56,13 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a>
-                    </li>
-                    @if (User.IsInRole("Admin"))
+	                <li class="nav-item">
+		                <a class="nav-link text-dark" asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a>
+	                </li>
+	                <li class="nav-item">
+		                <a class="nav-link text-dark" asp-area="" asp-controller="MiniGame" asp-action="Index">Mini game</a>
+	                </li>
+	                @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Admin</a>
@@ -63,24 +87,3 @@
 
 </body>
 </html>
-<script>
-
-    
-    const hubConnection = new signalR.HubConnectionBuilder()
-        .withUrl("/hub")
-        .build();
-
-    hubConnection.on("Notify",
-        function(data) {
-
-            let container = document.getElementById("main-container");
-            container.insertAdjacentHTML('afterbegin',
-                '<div class="alert alert-info alert-dismissible" role="alert">' +
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-                data +
-                '</div>');
-
-        });
-
-    hubConnection.start();
-</script>

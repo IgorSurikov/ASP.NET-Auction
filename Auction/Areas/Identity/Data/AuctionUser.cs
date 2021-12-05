@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -28,12 +29,23 @@ namespace Auction.Areas.Identity.Data
             get { return Name + " " + Surname; }
         }
 
-        [Column(TypeName = "decimal(18, 2)")] public decimal Wallet { get; set; }
+        [Column(TypeName = "decimal(18, 2)")] 
+        public decimal Wallet { get; set; }
 
+        [DefaultValue(false)]
+        public bool IsBanned { get; set; }
+
+        [DefaultValue(0)]
+        public int Rating { get; set; }
         public ICollection<Product> Products { get; set; }
         public ICollection<ProductLot> OwnerProductLots { get; set; }
         public ICollection<ProductLot> CustomerProductLots { get; set; }
         public ICollection<Transaction> CustomerTransactions { get; set; }
         public ICollection<Transaction> OwnerTransactions { get; set; }
+
+        public AuctionUser()
+        {
+	        IsBanned = false;
+        }
     }
 }

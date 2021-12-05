@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Auction.Constraints;
+using Auction.HostedServices;
 using Auction.Logger;
 using Auction.Signals;
 using Microsoft.AspNetCore.Localization;
@@ -49,6 +50,7 @@ namespace Auction
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+            services.AddHostedService<UpdateAuctionHostedService>();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {

@@ -18,6 +18,12 @@
     <Compile Remove="Migrations\20200929162331_fixProductModel1.Designer.cs" />
     <Compile Remove="Migrations\20201013113144_Transaction.cs" />
     <Compile Remove="Migrations\20201013113144_Transaction.Designer.cs" />
+    <Compile Remove="Migrations\20211006152820_isBanned.cs" />
+    <Compile Remove="Migrations\20211006152820_isBanned.Designer.cs" />
+    <Compile Remove="Migrations\20211006152929_isBanned.cs" />
+    <Compile Remove="Migrations\20211006152929_isBanned.Designer.cs" />
+    <Compile Remove="Migrations\20211006153316_isBanned.cs" />
+    <Compile Remove="Migrations\20211006153316_isBanned.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\mini_game\" />
   </ItemGroup>
 
 </Project>

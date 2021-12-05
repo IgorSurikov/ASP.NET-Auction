@@ -60,9 +60,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.UpdateDateTime)
                 </td>  
-                <td>
-                    @Html.DisplayFor(modelItem => item.Customer.FullName)
-                </td>
+	            <td>
+		            @(item.Customer.FullName.ToString() + " - rating: " + item.Customer.Rating.ToString())
+	            </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Owner.FullName)
                 </td>
